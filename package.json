@@ -1,0 +1,65 @@
+{
+  "name": "Re-hash",
+  "version": "0.1.0",
+  "author": "Mark Arenz",
+  "private": true,
+  "dependencies": {
+    "@auth0/auth0-spa-js": "^1.8.1",
+    "@material-ui/core": "^4.9.12",
+    "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-error": "^1.1.13",
+    "apollo-link-http": "^1.5.17",
+    "apollo-upload-client": "^13.0.0",
+    "array-move": "^2.2.1",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "md5": "^2.2.1",
+    "moment": "^2.25.3",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-apollo": "^3.1.5",
+    "react-dom": "^16.13.1",
+    "react-dropzone": "^11.0.1",
+    "react-router-dom": "^5.1.2",
+    "react-router-ga": "^1.2.3",
+    "react-scripts": "3.4.1",
+    "react-sortable-hoc": "^1.11.0",
+    "react-toastify": "^6.0.5",
+    "styled-components": "^5.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "aws s3 sync build/ s3://rehash.ridiculopathy.com"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4"
+  }
+}

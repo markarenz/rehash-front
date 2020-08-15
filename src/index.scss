@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+// COLORS from config/index/
+$blueLight: #84d3eb;
+$black: #333333;
+$purple: #9751a0;
+$green: #41b649;
+$pink: #e34e9c;
+$orange: #e8a526;
+$blueGrey: #2183a0;
+$purpleDark: #6e3b77;
+$pinkDark: #924158;
+$greenDark: #377b3d;
+$orangeDark: #a47617;
+$greyDark: #777777;
+$greyDarker: #555555;
+
+*{
+  font-family: Montserrat, Helvetica, sans;
+}
+
+*:focus{
+  outline:none;
+}
+html, body{
+  font-family: Montserrat, Helvetica, sans;
+  padding: 0;
+  margin: 0;
+}
+a{
+  color: #333;
+}
+
+h1,
+h2,
+h3{
+  font-weight:100;
+  margin:0;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p{
+  font-size:20px;
+  line-height: 1.3;
+  padding:0;
+  margin:0 0 14px 0;
+}
+p:last-child{
+  margin-bottom:0;
+}
+
+/* MATERIAL-UI */
+.MuiCard-root.MuiPaper-root{
+  background-color: rgba(255, 255, 255, 1);
+  border:1px solid #444;
+  box-shadow: none;
+  border-radius:10px;
+}
+.MuiButton-root.MuiButton-contained{
+  background-color: #9751a0;
+  color: white;
+  &:hover{
+    background-color: #ffffff;
+    color: #444;
+  }
+}
+
+.MuiCardHeader-root{
+  background-color: $greyDarker;
+  color: white;
+}
+
+.searchFieldTheme{
+  border-color:white!important;
+  label{
+    color:white;
+  }
+  &:focus{
+    label{
+      color:white;
+    }
+  }
+  legend{
+    color:white!important;
+    font-size:14px!important;
+  }
+  input{
+    color:white!important;
+  }
+  fieldset{
+    border-color: white!important;
+  }
+}
+.cardHeaderWithClose{
+  span{
+    width:calc(100% - 50px);
+  }
+}
+.iconDisabled{
+  opacity:.3;
+}
