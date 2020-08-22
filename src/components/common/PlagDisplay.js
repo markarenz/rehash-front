@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { colors } from '../../config/index';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { uppercaseFirst, lowercaseFirst } from '../../common/helpers';
 import { dateDisplayFormat } from '../../common/constants';
+import { breakPoints, colors } from '../../config';
 import {
     Card,
     CardContent,
@@ -50,12 +50,23 @@ const FooterGridL = styled(Grid)`
         text-decoration:none;
         font-weight:bold;
     }
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+        line-height: 2.0;
+        padding:0 12px!important;
+    }
 `;
 
 const FooterGridR = styled(Grid)`
     display:flex;
     align-items:center;
     justify-content: flex-end;
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+        padding:0 12px!important;
+    }
 `;
 const FooterAvatar = styled(Avatar)`
     &.MuiAvatar-root{
@@ -64,6 +75,9 @@ const FooterAvatar = styled(Avatar)`
         height:50px;
         margin-right:10px;
         background-color:${colors.greyDark};
+        @media (max-width: ${breakPoints.header}px) {
+            margin:0 auto 10px auto!important
+        }
     }
 `;
 const CitationItem = styled.span`

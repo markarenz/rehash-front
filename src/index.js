@@ -11,10 +11,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http'; // HttpLink
 import { ApolloProvider } from '@apollo/react-hooks';
 import { onError } from 'apollo-link-error';
+import { appConfig } from './config';
 
 const cache = new InMemoryCache();
 
-const httpLink = createHttpLink({ uri: `${process.env.REACT_APP_API_URL}/api` });
+const httpLink = createHttpLink({ uri: `${appConfig.REACT_APP_API_URL}/api` });
 const middlewareLink = new ApolloLink((operation, forward) => {
     operation.setContext({
         headers: {

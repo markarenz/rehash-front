@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../../config';
+import { colors, breakPoints } from '../../config';
 import { Link } from 'react-router-dom';
 import { Grid, Container } from '@material-ui/core';
-import {
-    GoogleAds,
-} from '../../components';
-// @media (max-width: ${breakPoints.xsMax}px) {
-//     max-width:200px;
-// }
+// import {
+//     GoogleAds,
+// } from '../../components';
+
 const StyledFooter = styled.div`
     border-top:4px solid ${colors.blueLight};
     box-shadow:0 0 20px rgba(0,0,0,.5);
@@ -29,6 +27,11 @@ const StyledFooter = styled.div`
             list-style-position:inside;
         }
     }
+`;
+
+
+const ChuckAndJane = styled.img`
+    max-width:140px;
 `;
 const FooterMain = styled.div`
     padding: 30px 0;
@@ -55,6 +58,10 @@ const Copyright = styled.div`
 `;
 const StyledGrid = styled(Grid)`
     align-items: center;
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+    }
 `;
 const FooterLogo = styled.img`
     max-width:130px;
@@ -78,7 +85,7 @@ const Footer = () => {
                                 </i>
                             </p>
                         </Grid>
-                        <Grid item xs={12} sm={2}>
+                        <StyledGrid item xs={12} sm={2}>
                             <p>
                                 <Link to="/contact">Contact</Link>
                             </p>
@@ -88,13 +95,13 @@ const Footer = () => {
                             <p>
                                 <Link to="/privacy-policy">Privacy Policy</Link>
                             </p>
-                        </Grid>
-                        <Grid item xs={12} sm={2}>
-                           <img src="/images/authors.svg" alt="Dickens and Austen: Together Again" />
-                        </Grid>
-                        <Grid item xs={12} align="center">
-                            <GoogleAds slot="2010356211" />
-                        </Grid>
+                        </StyledGrid>
+                        <StyledGrid item xs={12} sm={2}>
+                           <ChuckAndJane src="/images/authors.svg" alt="Chuck and Jane" />
+                        </StyledGrid>
+                        {/*<Grid item xs={12} align="center">*/}
+                        {/*    <GoogleAds slot="2010356211" />*/}
+                        {/*</Grid>*/}
                     </StyledGrid>
                 </Container>
             </FooterMain>

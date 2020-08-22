@@ -6,7 +6,7 @@ import {
     Card,
     Button
 } from "@material-ui/core";
-import { colors, pageStyle } from "../config";
+import { colors, pageStyle, appConfig } from "../config";
 import styled from 'styled-components';
 import { validateEmail } from '../common/helpers';
 import {
@@ -27,7 +27,10 @@ const StyledMain = styled.div`
     background-image: url(/images/mosaic-bg.gif);
     background-size: 1024px;
     background-repeat:repeat;
-    image-rendering: pixelated;   
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     color:white; 
 `;
 const StyledTextField = styled(TextField)`
@@ -132,7 +135,7 @@ const Contact = () => {
         formData.append('email', email);
         formData.append('topic', topic);
         formData.append('question', question);
-        fetch(`${process.env.REACT_APP_API_URL}/contact`, {
+        fetch(`${appConfig.REACT_APP_API_URL}/contact`, {
             method: 'POST',
             body: formData,
         })

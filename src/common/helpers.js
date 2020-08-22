@@ -31,12 +31,15 @@ function validateEmail(mail)  {
     return (false);
 }
 
+function isProduction() {
+    return !(window.location.href.includes('localhost'));
+}
+
 export {
-    // getGravatarHash,
-    // getGravatarSrc,
     uppercaseFirst,
     lowercaseFirst,
     shuffleArray,
     toSentenceCase,
     validateEmail,
+    isProduction,
 }

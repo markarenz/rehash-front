@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, {keyframes} from 'styled-components';
+import { breakPoints } from '../config';
 import { colors } from '../config/index';
 import {
     Container,
@@ -31,19 +32,30 @@ import {
 import PropTypes from 'prop-types';
 
 const StyledPage = styled.div`${pageStyle}`;
-
+const StyledGrid = styled(Grid)`
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+    }
+`;
 const StyledMain = styled.div`
     background-color: #bbb;
     min-height: calc(100vh - 90px);
     background-image: url(/images/mosaic-bg-orange.gif);
     background-size: 1024px;
     background-repeat:repeat;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
     image-rendering: pixelated;
     color:white;
 `;
 const StyledIconTypeStyle = `
     width:100%!important;
     height:auto!important;
+    @media (max-width: ${breakPoints.header}px) {
+        max-width:80px;
+    }
 `;
 const StyledIconTypeFav = styled(IconTypeFav)`${StyledIconTypeStyle}`;
 const StyledIconTypeDefault = styled(IconTypeDefault)`${StyledIconTypeStyle}`;
@@ -110,12 +122,20 @@ const FooterGridL = styled(Grid)`
         text-decoration:none;
         font-weight:bold;
     }
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+    }    
 `;
 
 const FooterGridR = styled(Grid)`
     display:flex;
     align-items:center;
     justify-content: flex-end;
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+    }    
 `;
 
 const Alerts = ({ getUnreadAlerts }) => {
@@ -233,9 +253,9 @@ const Alerts = ({ getUnreadAlerts }) => {
                                 alerts && alerts.map((item, idx) => <StyledCard key={idx}>
                                     <StyledCardContent isread={item.isRead ? 'y' : 'n'}>
                                         <Grid container spacing={3}>
-                                            <Grid item xs={12} sm={1}>
+                                            <StyledGrid item xs={12} sm={1}>
                                                 { displayAlertTypeIcon(item.alertType) }
-                                            </Grid>
+                                            </StyledGrid>
                                             <Grid item xs={12} sm={11}>
                                                 {item.alertMessage}
                                             </Grid>

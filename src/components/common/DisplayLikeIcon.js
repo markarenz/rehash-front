@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, {keyframes} from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import {FavoriteBorder as IconLike, FavoriteTwoTone as IconLiked} from "@material-ui/icons";
 import {colors} from "../../config";
 

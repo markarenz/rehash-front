@@ -16,7 +16,7 @@ import {
 } from '../components';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { colors } from "../config";
+import { colors, breakPoints } from "../config";
 import { dateDisplayFormat } from '../common/constants';
 import moment from 'moment';
 import history from "../utils/history";
@@ -35,6 +35,14 @@ const FooterGridL = styled(Grid)`
         text-decoration:none;
         font-weight:bold;
     }
+    @media (max-width: ${breakPoints.header}px) {
+        display:block;
+        text-align:center;
+        line-height: 2.0;
+        .MuiAvatar-root{
+            margin:0 auto!important;
+        }
+    }    
 `;
 
 const FooterGridR = styled(Grid)`

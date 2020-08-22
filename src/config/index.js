@@ -1,3 +1,13 @@
+import { isProduction } from '../common/helpers';
+
+const appConfig = {
+    REACT_APP_AUTH0_DOMAIN: 'rehashapp.auth0.com',
+    REACT_APP_AUTH0_CLIENTID: 'n8JehCx6E8S25hwuNDUlunhn2bMLwm2d',
+    REACT_APP_GOOGLE_ADSENSE_PUBLISHER: 'pub-0660784381554248',
+    REACT_APP_API_URL: isProduction() ? 'https://rehash-ridiculopathy.herokuapp.com' : 'http://localhost:5000',
+    // REACT_APP_API_URL: 'https://rehash-ridiculopathy.herokuapp.com',
+};
+
 const breakPoints = {
     header: 1000,
     smMin: 600,
@@ -68,4 +78,5 @@ export {
     breakPoints,
     pageStyle,
     noSelect,
+    appConfig,
 }

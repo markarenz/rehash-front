@@ -19,53 +19,61 @@ const StyledAppBar = styled(AppBar)`
     box-shadow: 0 4px 30px rgba(0,0,0,.4)!important;
 `;
 const StyledToolbar = styled(Toolbar)`
-        padding:0 30px;
-        background-color: ${colorsByRole.header};
-        border-bottom:10px solid ${props => headerBorderColors[props.currentpage]};
-        @media (max-width: ${breakPoints.header}px) {
-            padding:0;
-            flex-direction: column;
+    padding:0 30px;
+    background-color: ${colorsByRole.header};
+    border-bottom:10px solid ${props => headerBorderColors[props.currentpage]};
+    @media (max-width: ${breakPoints.header}px) {
+        padding:0;
+        flex-direction: column;
+    }
+`;
+const unauthenticatedButtonWidth = `
+    @media (max-width: ${breakPoints.header}px) {
+        .headerBtn{
+            width: calc(100vw / 4);
         }
+    }
 `;
 const ButtonWrap = styled.div`
-        flex: 1;
-        display: flex;
-        height:80px;
-        justify-content: flex-end;
-        @media (max-width: ${breakPoints.header}px) {
-            flex: 0;
-        }
-    `;
+    flex: 1;
+    display: flex;
+    height:80px;
+    justify-content: flex-end;
+    ${props => props.isauth === 'n' ? unauthenticatedButtonWidth : ''}
+    @media (max-width: ${breakPoints.header}px) {
+        flex: 0;
+    }
+`;
 // background-color: ${colors.black};
 const buttonActive = `
-        &:after{
-            left:0;
-            width:100%;
-        }
+    &:after{
+        left:0;
+        width:100%;
+    }
 `;
 const mmButtonStyled = `
-        height:100%;
-        background-color: red;
-        width:80px;
-        cursor: pointer;
-        margin-left:30px;
-        position:relative;
-        position:relative;
-        &:after{
-            content: ' ';
-            display:block;
-            width: 0%;
-            height:10px;
-            position:absolute;
-            bottom:-10px;
-            left: 50%;
-            background-color: white;
-            transition: .2s all ease-out;        
-        }
-        @media (max-width: ${breakPoints.header}px) {
-            margin-left:0;
-            width: calc(100vw / 6);
-        }
+    height:100%;
+    background-color: red;
+    width:80px;
+    cursor: pointer;
+    margin-left:30px;
+    position:relative;
+    position:relative;
+    &:after{
+        content: ' ';
+        display:block;
+        width: 0%;
+        height:10px;
+        position:absolute;
+        bottom:-10px;
+        left: 50%;
+        background-color: white;
+        transition: .2s all ease-out;        
+    }
+    @media (max-width: ${breakPoints.header}px) {
+        margin-left:0;
+        width: calc(100vw / 6);
+    }
 `;
 const MmButtonTwitter = styled.a`
     ${mmButtonStyled}
@@ -87,7 +95,7 @@ const MmBtnImgWrap = styled.div`
     position:absolute;
     top:0;left:0;
     @media (max-width: ${breakPoints.header}px) {
-    width:100%;
+        width:100%;
     }
 `;
 const MmBtnImg = styled.img`
@@ -105,6 +113,10 @@ const MmBtnImgFeed = styled(MmBtnImg)`
     width:120px;
     height:120px;
     transform-origin: 50% 50%;
+    @media (max-width: ${breakPoints.header}px) {
+        width:100%;
+        left: 0%;
+    }
 `;
 const MmBtnImgMessages = styled(MmBtnImg)`
     top:-5px;
@@ -112,6 +124,10 @@ const MmBtnImgMessages = styled(MmBtnImg)`
     width:110px;
     height:110px;
     transform-origin: 20% 60%;
+    @media (max-width: ${breakPoints.header}px) {
+        width:100%;
+        left: 0%;
+    }
 `;
 const MmBtnImgNew = styled(MmBtnImg)`
     top:6px;
@@ -119,6 +135,10 @@ const MmBtnImgNew = styled(MmBtnImg)`
     width:90px;
     height:90px;
     transform-origin: 90% 10%;
+    @media (max-width: ${breakPoints.header}px) {
+        width:100%;
+        left: 0%;
+    }
 `;
 const MmBtnImgAlerts = styled(MmBtnImg)`
     top:-22px;
@@ -133,6 +153,10 @@ const MmBtnImgTwitter = styled(MmBtnImg)`
     width:100px;
     height:100px;
     transform-origin: 80% 50%;
+    @media (max-width: ${breakPoints.header}px) {
+        width:100%;
+        left:-10%;
+    }
 `;
 const MmBtnImgProfile = styled(MmBtnImg)`
     top:0;
@@ -140,6 +164,11 @@ const MmBtnImgProfile = styled(MmBtnImg)`
     width:80px;
     height:80px;
     transform-origin: 50% 50%;
+    @media (max-width: ${breakPoints.header}px) {
+        width:100%;
+        height:auto;
+        left: 0%;
+    }
 `;
 const MmBtnImgLogin = styled(MmBtnImg)`
     top:-14px;
@@ -182,6 +211,7 @@ const WDNNSBadge = styled.div`
     font-size: 14px;
     border:2px solid white;
     pointer-events: none;
+    z-index:10;
 `;
 
 
@@ -210,10 +240,13 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                       isLogoAnimating={isLogoAnimating}
                   />
               </Link>
-              <ButtonWrap>
+              <ButtonWrap
+                  isauth={isAuthenticated ? 'y' : 'n'}
+              >
                   <MmButtonFeed
                       to="/"
                       currentpage={currentPage}
+                      className="headerBtn"
                   >
                       <MmBtnImgWrap>
                           <MmBtnImgFeed src="/images/mm-btn-feed.svg" alt="Feed" />
@@ -223,6 +256,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                   <MmButtonNew
                       to="/new"
                       currentpage={currentPage}
+                      className="headerBtn"
                   >
                       <MmBtnImgWrap>
                           <MmBtnImgNew src="/images/mm-btn-new.svg" alt="New" />
@@ -234,6 +268,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                       <MmButtonMessages
                           to="/messages"
                           currentpage={currentPage}
+                          className="headerBtn"
                       >
                           <MmBtnImgWrap>
                               <MmBtnImgMessages src={`/images/mm-btn-mailbox-${numUnreadMessages > 0 ? 'full' : 'empty'}.svg`} alt="Messages" />
@@ -254,6 +289,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                       <MmButtonAlerts
                           to="/alerts"
                           currentpage={currentPage}
+                          className="headerBtn"
                       >
                           <MmBtnImgWrap>
                               <MmBtnImgAlerts src="/images/mm-btn-alerts.svg" alt="Alerts" />
@@ -275,6 +311,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                           <MmButtonProfile
                               to="/profile"
                               currentpage={currentPage}
+                              className="headerBtn"
                           >
                               <MmBtnImgWrap>
                                   <MmBtnImgProfile
@@ -288,6 +325,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                               to="/login"
                               currentpage={currentPage}
                               onClick={() => loginWithRedirect({})}
+                              className="headerBtn"
                           >
                               <MmBtnImgWrap>
                                   <MmBtnImgLogin src="/images/mm-btn-login.svg" alt="Login" />
@@ -300,6 +338,7 @@ const Header = ({ currentPage, appUser, getUnreadAlerts, unreadAlerts, unreadMes
                       target="_blank"
                       rel="noopener noreferrer"
                       currentpage={currentPage}
+                      className="headerBtn"
                   >
                       <MmBtnImgWrap>
                           <MmBtnImgTwitter src="/images/mm-btn-tw.svg" alt="Twitter" />

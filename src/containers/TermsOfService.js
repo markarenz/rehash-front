@@ -11,7 +11,10 @@ const StyledMain = styled.div`
     background-image: url(/images/mosaic-bg.gif);
     background-size: 1024px;
     background-repeat:repeat;
-    image-rendering: pixelated;   
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
     color:white; 
 `;
 const StyledH2 = styled.h2`

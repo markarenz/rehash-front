@@ -39,6 +39,9 @@ const StyledMain = styled.div`
     background-image: url(/images/mosaic-bg-green.gif);
     background-size: 1024px;
     background-repeat:repeat;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
     image-rendering: pixelated;
     color:white;
 `;

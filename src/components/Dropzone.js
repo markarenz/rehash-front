@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { CircularProgress } from '@material-ui/core';
+import { appConfig } from '../config';
 
 const DropZoneWrap = styled.div`
     width:100%;
@@ -23,17 +24,13 @@ const Dropzone = ({ auth0Id, userId, avatar, handleAvatarChange, handleAvatarUpl
         // Do something with the files
         if (acceptedFiles.length > 0){
             const image = acceptedFiles[0];
-            // const bodyObj = {
-            //     auth0Id,
-            //     photo: image,
-            // };
             var formData = new FormData();
             formData.append('photo', image);
             formData.append('auth0Id', auth0Id);
             formData.append('userId', userId);
             formData.append('oldAvatar', avatar);
             setIsUploading(true);
-            fetch(`${process.env.REACT_APP_API_URL}/avatar`, {
+            fetch(`${appConfig.REACT_APP_API_URL}/avatar`, {
                 method: 'POST',
                 headers: new Headers({
                 //     'Content-Type': 'application/json',
