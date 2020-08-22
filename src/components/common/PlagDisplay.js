@@ -33,7 +33,7 @@ const Citations = styled.div`
   }
 `;
 const PlagCitationNum = styled.sup`
-    font-size: 12px;
+    font-size: 9px;
     text-decoration:none;
 `;
 const PlagFooter = styled(CardActions)`

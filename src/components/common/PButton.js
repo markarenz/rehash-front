@@ -22,8 +22,8 @@ const StyledButton = styled(Button)`
     ${props => props.overwhite === 'y' && overWhiteStyle};
 `;
 const Label = styled.span`
-    display:inline-block;
-    margin-left:10px;
+    display:inline-block;    
+    ${props => props.label !== '' ? 'margin-left:10px;' : ''}
 `;
 
 const PButton = ({ label, icon, handler, disabled, overWhite }) => <ButtonWrap>
@@ -34,7 +34,9 @@ const PButton = ({ label, icon, handler, disabled, overWhite }) => <ButtonWrap>
         overwhite={overWhite && 'y'}
     >
         {icon}
-        <Label>
+        <Label
+            label={label}
+        >
             {label}
         </Label>
     </StyledButton>

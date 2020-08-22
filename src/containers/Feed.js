@@ -20,6 +20,7 @@ import {
     ArrowForward as IconNext,
     Mail as IconSendMessage,
     ContactSupport as IconContact,
+    Replay as IconRequery,
 } from '@material-ui/icons';
 import {
     MPlagDisplay,
@@ -105,7 +106,8 @@ const StyledAvatar = styled(Avatar)`
     }
 `;
 
-const Feed = ({ appUser, mode, isLoggedIn }) => {
+const Feed = ({ appUser, mode, isLoggedIn, currentPage }) => {
+    const [trigger, setTrigger] = useState(0);
     const [search, setSearch] = useState('');
     const [filterFavs, setFilterFavs] = useState(false);
     const itemsPerPage = 10;
@@ -120,6 +122,7 @@ const Feed = ({ appUser, mode, isLoggedIn }) => {
         variables: {
             id: userId,
         },
+        fetchPolicy: 'network-only',
     });
     const fetchUserInfo = async () => {
         await getUserById({
@@ -146,6 +149,7 @@ const Feed = ({ appUser, mode, isLoggedIn }) => {
             mode,
             userId,
             filterFavs,
+            trigger,
         },
     });
 
@@ -158,15 +162,16 @@ const Feed = ({ appUser, mode, isLoggedIn }) => {
             isMounted = false;
         }
         // eslint-disable-next-line
-    }, [searchSend]);
+    }, [searchSend, trigger, currentPage]);
 
     const getPostsFresh = async () => {
+        const thisPostOffset = (posts && posts.getPosts.length > 0) ? 0 : postOffset;
         if (posts && posts.getPosts.length > 0) {
             await setPostOffset(0);
         }
         await getPosts({
             variables: {
-                offset: postOffset,
+                offset: thisPostOffset,
                 itemsPerPage,
                 search: searchSend,
                 filterFavs,
@@ -191,6 +196,9 @@ const Feed = ({ appUser, mode, isLoggedIn }) => {
             setPostOffset(newOffset);
         }
         getPosts();
+    };
+    const handleRequeryButton = () => {
+        setTrigger(Math.floor(Math.random()*999999));
     };
     const PaginationDisplay = () => {
         if (!posts){
@@ -220,6 +228,16 @@ const Feed = ({ appUser, mode, isLoggedIn }) => {
                         disabled={false}
                     />
                 }
+                <span
+                    style={{ marginLeft: 10 }}
+                >
+                    <PButton
+                        label=""
+                        handler={handleRequeryButton}
+                        icon={<IconRequery />}
+                        disabled={false}
+                    />
+                </span>
             </Grid>
         );
     };
@@ -459,5 +477,6 @@ Feed.propTypes = {
     appUser: PropTypes.objectOf(PropTypes.any),
     isLoggedIn: PropTypes.bool.isRequired,
     mode: PropTypes.string.isRequired,
+    currentPage: PropTypes.string.isRequired,
 };
 export default Feed;

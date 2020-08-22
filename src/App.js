@@ -121,11 +121,13 @@ const App = () => {
         appUser={appUser}
     />
     const HomeWithProps = () => <Feed
+        currentPage={currentPage}
         isLoggedIn={isLoggedIn}
         appUser={appUser}
         mode="home"
     />;
     const UserWithProps = () => <Feed
+        currentPage={currentPage}
         isLoggedIn={isLoggedIn}
         appUser={appUser}
         mode="user"
