@@ -170,6 +170,7 @@ const PlagDisplay = ({ plag, user, preview, postDate, isFaved, numLikes, idx, ha
                     </FooterGridL>
                     <FooterGridR item xs={12} sm={4} align="right">
                         <PlagLike
+                            title={!isLoggedIn ? 'You feel an impulse to click like on this post. I get it. But you need to log in first, \'k?' : ''}
                             user={user}
                             numLikes={numLikes}
                             idx={idx}
