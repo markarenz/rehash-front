@@ -20,6 +20,11 @@ const overWhiteStyle = `
 const StyledButton = styled(Button)`
     margin-left: 12px;
     ${props => props.overwhite === 'y' && overWhiteStyle};
+    &.MuiButton-contained.Mui-disabled{
+        background-color:rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: rgba(255,255,255,0.2);
+    }
 `;
 const Label = styled.span`
     display:inline-block;    

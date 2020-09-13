@@ -13,7 +13,7 @@ import {
 import { toast } from 'react-toastify';
 import { messageSources } from '../data';
 import { useMutation } from "@apollo/react-hooks";
-import { shuffleArray, toSentenceCase } from '../common/helpers';
+import { shuffleArray, toSentenceCase, removePunctuation } from '../common/helpers';
 import {
     Headline2,
     PButton,
@@ -145,7 +145,7 @@ const NewMessage = ({ isLoggedIn, appUser }) => {
     };
     const handleSourceWordClick = (word) => {
         const wordSep = (selectedSourceType === punctuationSourceType) ? '' : ' ';
-        setMessage(toSentenceCase(`${message}${wordSep}${word}`));
+        setMessage(toSentenceCase(removePunctuation(`${message}${wordSep}${word}`)));
     };
     const handleClearMessage = () => {
         setMessage('');

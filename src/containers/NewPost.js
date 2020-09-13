@@ -14,12 +14,14 @@ import {
     ArrowDownward as IconNewline2,
 } from '@material-ui/icons';
 import { pageStyle } from "../config";
+import { removePunctuation } from "../common/helpers";
 import {
     Headline2,
     PButton,
     MPlagDisplay,
     LoadingDialog,
     SourcesPanel,
+    NewPostLoginWarning,
 } from '../components';
 import { sources } from '../data';
 import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
@@ -82,8 +84,6 @@ const EditPanelWrap = styled.div`
     min-height:500px;
 `;
 
-
-
 const NewPost = ({ appUser, refreshAppUser, isLoggedIn }) => {
     const [sourceSearch, setSourceSearch] = useState('');
     const [createPostGql, { loading: createPostIsLoading, error: createPostError }] = useMutation(CREATE_POST);
@@ -106,7 +106,7 @@ const NewPost = ({ appUser, refreshAppUser, isLoggedIn }) => {
                 },
             });
             // update AppUser to update score, numPosts, etc.
-            refreshAppUser();
+            await refreshAppUser();
             // Back to the homepage you go.
             history.push('/');
         } catch(error){
@@ -136,8 +136,7 @@ const NewPost = ({ appUser, refreshAppUser, isLoggedIn }) => {
     };
     const getMaxIdFromPlag = () => (plag.length === 0) ? 0 : plag.reduce((max, p) => p.id > max ? p.id : max, plag[0].id);
     const handleSourceInspectorInsert = (idx) => {
-        // remove punctuation
-        const text = selectedSource.lines[idx].t.replace(/[.,/#!$%^&*;:{}=_`~()]/g,""); // -
+        const text = removePunctuation(selectedSource.lines[idx].t);
         const citation = setSelectedSource.citation;
         const newId = (getMaxIdFromPlag() + 1);
         const newSnippet = {
@@ -253,12 +252,15 @@ const NewPost = ({ appUser, refreshAppUser, isLoggedIn }) => {
                                         label="Publish"
                                         icon={<IconPublish />}
                                         handler={handlePublish}
-                                        disabled={!plagValid}
+                                        disabled={!plagValid || !appUser?._id}
                                     />
                                 </Grid>
                             </Grid>
 
                             <Grid container spacing={3}>
+                                {
+                                    !appUser?._id && <NewPostLoginWarning />
+                                }
                                 <Grid item xs={12} sm={6}>
                                     <SourcesPanel
                                         sourceInspectorOpen={sourceInspectorOpen}

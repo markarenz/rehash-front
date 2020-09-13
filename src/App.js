@@ -167,10 +167,10 @@ const App = () => {
                             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
                             <Route exact path="/terms-of-service" component={TermsOfService} />
                             <Route exact path="/user/:userId" component={UserWithProps} />
-                            <Route exact path="/messages" component={MessagesWithProps} />
+                            <PrivateRoute exact path="/messages" component={MessagesWithProps} />
                             <PrivateRoute exact path="/profile" component={ProfileWithProps} />
-                            <PrivateRoute exact path="/new" component={NewPostWithProps} />
-                            <Route exact path="/alerts" component={AlertsWithProps} />
+                            <Route exact path="/new" component={NewPostWithProps} />
+                            <PrivateRoute exact path="/alerts" component={AlertsWithProps} />
                             <PrivateRoute path="/new-message/:userId" component={NewMessageWithProps} />
                             <Route path="*" component={FourOhFour} />
                         </Switch>

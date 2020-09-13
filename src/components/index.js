@@ -22,6 +22,7 @@ import DisplayLikeIcon from "./common/DisplayLikeIcon";
 import MessageDisplay from "./MessageDisplay";
 import GoogleAds from './GoogleAds';
 import GoogleFixedAds from "./GoogleFixedAds";
+import NewPostLoginWarning from "./common/NewPostLoginWarning";
 
 export {
     LogoH,
@@ -48,4 +49,5 @@ export {
     MessageDisplay,
     GoogleAds,
     GoogleFixedAds,
+    NewPostLoginWarning,
 }

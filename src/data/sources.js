@@ -4573,7 +4573,7 @@ const sources = [
     {
         "id": 46,
         "author": "Phillis Wheatley",
-        "author_img": "phillis_wheatley.jpg",
+        "author_img": "phillis_wheatley2.jpg",
         "title": "On Virtue",
         "section_title": "",
         "link": "https://www.gutenberg.org/ebooks/409",
@@ -4699,7 +4699,7 @@ const sources = [
     {
         "id": 47,
         "author": "Phillis Wheatley",
-        "author_img": "phillis_wheatley.jpg",
+        "author_img": "phillis_wheatley2.jpg",
         "title": "A Hymn to the Morning",
         "section_title": "",
         "link": "https://www.gutenberg.org/ebooks/409",

@@ -52,7 +52,7 @@ const FooterMain = styled.div`
 const Copyright = styled.div`
     padding: 20px 0;
     font-size: 14px;
-    background-color: ${colors.blueDark};
+    background-color: ${colors.greyDarker};
     color: white;
     
 `;
@@ -66,6 +66,18 @@ const StyledGrid = styled(Grid)`
 const FooterLogo = styled.img`
     max-width:130px;
 `;
+const BetaDiclaimer = styled.div`
+    background: ${colors.blueDark};
+    font-size:14px;
+    font-style: italic;
+    color: white;
+    padding:20px;
+    a{
+        text-decoration:none;
+        font-weight:bold;
+    }
+`;
+
 const Footer = () => {
     return (
         <StyledFooter>
@@ -99,12 +111,26 @@ const Footer = () => {
                         <StyledGrid item xs={12} sm={2}>
                            <ChuckAndJane src="/images/authors.svg" alt="Chuck and Jane" />
                         </StyledGrid>
-                        {/*<Grid item xs={12} align="center">*/}
-                        {/*    <GoogleAds slot="2010356211" />*/}
-                        {/*</Grid>*/}
+                        <Grid item xs={12} align="center">
+                            <GoogleAds slot="2010356211" />
+                        </Grid>
                     </StyledGrid>
                 </Container>
             </FooterMain>
+            <BetaDiclaimer>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} align="center">
+                        Note: Re:hash is currently in "beta." This means things work, mostly. If you have an issue
+                        {' '}<a
+                            href="https://twitter.com/Re_hash_app"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                        >
+                            Tweet @ us.
+                        </a>
+                    </Grid>
+                </Grid>
+            </BetaDiclaimer>
             <Copyright>
                 <Container>
                     <Grid container spacing={3}>

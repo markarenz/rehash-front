@@ -11,6 +11,14 @@ const lowercaseFirst = (input) => {
     return `${input[0].toLowerCase()}${input.slice(1)}`;
 };
 
+const removePunctuation = (input) => {
+    const punctRE = /[\u2000-\u206F\u2E00-\u2E7F\\'!—"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
+    const spaceRE = /\s+/g;
+    return input.replace(punctRE, '')
+        .replace(spaceRE, ' ')
+        .replace('\u2014', '');
+}
+
 const toSentenceCase = (string) => {
     let newString = string.replace(/(^\s*\w|[.!?]\s*\w)/g,function(c){return c.toUpperCase()});
     return newString;
@@ -42,4 +50,5 @@ export {
     toSentenceCase,
     validateEmail,
     isProduction,
+    removePunctuation,
 }

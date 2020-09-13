@@ -142,6 +142,8 @@ const Feed = ({ appUser, mode, isLoggedIn, currentPage }) => {
         loading: getPostsIsLoading,
         data: posts,
     }] = useLazyQuery(GET_POSTS, {
+        fetchPolicy: `network-only`,
+        pollInterval: 30000,
         variables: {
             offset: postOffset,
             itemsPerPage,
@@ -169,6 +171,7 @@ const Feed = ({ appUser, mode, isLoggedIn, currentPage }) => {
         if (posts && posts.getPosts.length > 0) {
             await setPostOffset(0);
         }
+        console.log('getPostsFresh...');
         await getPosts({
             variables: {
                 offset: thisPostOffset,

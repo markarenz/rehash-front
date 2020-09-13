@@ -12,11 +12,6 @@ const LikesDispSup = styled.sup`
     line-height:1;
     font-size: 18px;
 `;
-const StyledTooltip = styled(Tooltip)`
-    .MuiTooltip-tooltip{
-        font-size:20px;
-    }
-`;
 
 const PlagLike = ({
       numLikes,
