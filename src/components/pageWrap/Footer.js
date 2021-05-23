@@ -111,9 +111,9 @@ const Footer = () => {
                         <StyledGrid item xs={12} sm={2}>
                            <ChuckAndJane src="/images/authors.svg" alt="Chuck and Jane" />
                         </StyledGrid>
-                        <Grid item xs={12} align="center">
-                            <GoogleAds slot="2010356211" />
-                        </Grid>
+                        {/*<Grid item xs={12} align="center">*/}
+                        {/*    <GoogleAds slot="2010356211" />*/}
+                        {/*</Grid>*/}
                     </StyledGrid>
                 </Container>
             </FooterMain>
