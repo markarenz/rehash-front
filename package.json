@@ -17,11 +17,10 @@
     "apollo-link-http": "^1.5.17",
     "apollo-upload-client": "^13.0.0",
     "array-move": "^2.2.1",
-    "graphql": "^15.0.0",
-    "graphql-tag": "^2.10.3",
+    "graphql": "^14.7.0",
+    "graphql-tag": "^2.12.6",
     "md5": "^2.2.1",
     "moment": "^2.25.3",
-    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
@@ -31,6 +30,7 @@
     "react-scripts": "3.4.1",
     "react-sortable-hoc": "^1.11.0",
     "react-toastify": "^6.0.5",
+    "sass": "^1.57.1",
     "styled-components": "^5.1.0"
   },
   "scripts": {
